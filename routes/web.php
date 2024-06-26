@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\IsAdmin;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,23 +24,16 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// cek tmplate
-Route::get('tes', function () {
-    return view('layouts.admin');
-});
 
-// route admin BACKEND
-Route::group(['previx'=>'admin','middleware'=>'auth'], function () {
+  // untuk Route Backend Lainnya
+  Route::group(['prefix' => 'admin', 'middleware' => ['auth', IsAdmin::class]], function () {
     Route::get('/', function () {
-    return view('admin.index');
-});
-    // route BACKEND lainnya
+        return view('admin.index');
+    });
+    // route lain
+    Route::resource('user', App\Http\Controllers\UsersController::class);
 });
 
-//cek tmplate FRONTEND
-Route::get('tes', function () {
-    return view('layouts.front');
-});
 
 // ROUTE FRONTEND
 Route::get('/', [FrontController::class, 'index']);
