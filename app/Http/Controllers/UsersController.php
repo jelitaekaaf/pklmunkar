@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Alert;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,6 +15,9 @@ class userscontroller extends Controller
     public function index()
     {
         $users = User::all();
+        $title = 'Delete User!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return view('admin.user.index', compact('users'));
     }
 
@@ -46,9 +49,10 @@ class userscontroller extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = ($request->password);
         $user->isAdmin = $request->isAdmin;
         $user->save();
+        Alert::success('Success','Data Berhasil di simpan')->autoClose(2000);
         return redirect()->route('user.index');
     }
 
@@ -112,6 +116,7 @@ class userscontroller extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
+        Alert::success('Success','Data Berhasil di hapus')->autoClose(90000);
         return redirect()->route('user.index');
     }
 }

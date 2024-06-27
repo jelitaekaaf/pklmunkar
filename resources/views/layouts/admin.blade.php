@@ -28,7 +28,9 @@
   <link href="{{asset('./sass/semi-dark.css')}}" rel="stylesheet">
   <link href="{{asset('./sass/bordered-theme.css')}}" rel="stylesheet">
   <link href="{{asset('./sass/responsive.css')}}" rel="stylesheet">
-@yield('styles')
+ 
+  @yield('styles')
+  
 </head>
 
 <body>
@@ -276,6 +278,7 @@
 	   new PerfectScrollbar(".user-list")
   </script>
   @stack('scripts')
+  @include('sweetalert::alert')
 </body>
 
 </html>

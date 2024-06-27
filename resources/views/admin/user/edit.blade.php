@@ -5,7 +5,7 @@
 
 @section('content')
 
- <div class="col-7 col-xl-7">
+ <div class="col-9 col-xl-9">
     <div class="card">
         <div class="card-body p-4">
             <h5 class="mb-4">Edit User <b>{{$user->name}}</b></h5>

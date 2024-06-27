@@ -36,7 +36,7 @@ class FrontController extends Controller
     }
     public function detail()
     {
-        return view('detail');
+        return view('detail ');
     }
 
 

@@ -14,32 +14,32 @@
         <!--navigation-->
         <ul class="metismenu" id="sidenav">
           <li>
-            <a href="javascript:;" class="has-arrow">
+            <a href="{{url('/admin')}}">
               <div class="parent-icon"><i class="material-icons-outlined">home</i>
               </div>
               <div class="menu-title">Dashboard</div>
             </a>
-            <ul>
+            {{-- <ul>
               <li><a href="index.html"><i class="material-icons-outlined">arrow_right</i>Analysis</a>
               </li>
               <li><a href="index2.html"><i class="material-icons-outlined">arrow_right</i>eCommerce</a>
               </li>
-            </ul>
+            </ul> --}}
           </li>
           <li>
-            <a href="javascript:;" class="has-arrow">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+           <a href="{{route('user.index')}}">
+              <div class="parent-icon"><i class="material-icons-outlined">person</i>
               </div>
-              <div class="menu-title">Widgets</div>
+              <div class="menu-title">Users Management</div>
             </a>
-            <ul>
+            {{-- <ul>
               <li><a href="widgets-data.html"><i class="material-icons-outlined">arrow_right</i>Data</a>
               </li>
               <li><a href="widgets-static.html"><i class="material-icons-outlined">arrow_right</i>Static</a>
               </li>
-            </ul>
+            </ul> --}}
           </li>
-          <li>
+          {{-- <li>
             <a class="has-arrow" href="javascript:;">
               <div class="parent-icon"><i class="material-icons-outlined">apps</i>
               </div>
@@ -59,7 +59,7 @@
               <li><a href="app-invoice.html"><i class="material-icons-outlined">arrow_right</i>Invoice</a>
               </li>
             </ul>
-          </li>
+          </li> --}}
           <li class="menu-label">UI Elements</li>
           <li>
             <a href="cards.html">

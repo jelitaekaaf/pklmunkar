@@ -4,6 +4,7 @@
 @endsection
 
 @section('content')
+	<div class="col-12 col-xl-12">
     	<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 					<div class="breadcrumb-title pe-3">Dashboard</div>
 					<div class="ps-3">
@@ -17,7 +18,7 @@
 					</div>
 					<div class="ms-auto">
 						<div class="btn-group">
-							<button type="button" class="btn btn-primary"><a href="{{route('user.create')}}" class="text-white">Add Data</a></button>
+							<button type="button" class="btn btn-grd-info"><a href="{{route('user.create')}}" class="text-white">Add Data</a></button>
 						</div>
 					</div>
 				</div>
@@ -41,11 +42,20 @@
 								<tbody>
                                     @php $i = 1;  @endphp
                                     @foreach ($users as $data )
+									@if($loop->first)
                                         <tr>
                                             <td>{{$i++}}</td>
                                             <td>{{$data->name}}</td>
                                             <td>{{$data->email}}</td>
                                             <td>{{$data->isAdmin == 1 ? 'Admin' : 'User'}}</td>
+											<td></td>
+										</tr>
+										@else	
+										<tr>
+                                            <td>{{$i++}}</td>
+                                            <td>{{$data->name}}</td>
+                                            <td>{{$data->email}}</td>
+                                            <td>{{$data->isAdmin == 1 ? 'Admin' : 'User'}}</td>			
                                             <td>
                                                 <form action="{{route('user.destroy',$data->id)}}" method="post">
                                                     @csrf
@@ -53,20 +63,22 @@
                                                     <a href="{{route('user.edit',$data->id)}}" class="btn btn-grd-warning">
                                                         Edit
                                                 </a>
-												@if ($i == 2)
-												<button class="btn btn-sm btn-danger" type="submit" disabled
+												{{-- @if ($i == 2)
+												<button class="btn btn-grd-danger" type="submit" disabled
 													onclick="return confirm('Apakah anda yakin ingin menghapus data ini')">
 													Delete
 												</button>
-											@else
-												<button class="btn btn-sm btn-danger" type="submit" 
-													onclick="return confirm('Apakah anda yakin ingin menghapus data ini')">
-													Delete
-												</button>
+											@else --}}
+												{{-- <button class="btn btn-sm btn-danger" type="submit" 
+												data-confirm-delete="true">
+														Delete
+												</button> --}}
+												<a href="{{ route('user.destroy', $data->id) }}" class="btn btn-grd-danger" data-confirm-delete="true">Delete</a>
 											@endif
                                                 </form>
                                             </td>
                                         </tr>
+										
                                     @endforeach
 
                                 </tbody>
@@ -74,6 +86,7 @@
 						</div>
 					</div>
 				</div>
+	</div>
 @endsection
 
 @push('scripts')
